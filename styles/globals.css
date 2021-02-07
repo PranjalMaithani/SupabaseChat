@@ -1,10 +1,11 @@
 :root {
   --dark-purple: #28162c;
   --cyan: #36e0d5;
-  --background: #4a305f;
+  --background: #292622;
   --red: #be234d;
   --grey: rgb(140, 140, 140);
   --darkGrey: rgb(50, 50, 50);
+  --yellow: rgb(230, 144, 47);
 }
 
 html,
@@ -46,7 +47,7 @@ p {
 }
 
 .alternate {
-  background-color: var(--purple, #853dcc);
+  background-color: var(--yellow, rgb(230, 144, 47));
   transition: 0.2s;
 }
 

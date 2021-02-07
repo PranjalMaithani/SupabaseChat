@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { Button } from "./Styles";
 
 const SidebarDiv = styled.div`
@@ -30,7 +31,15 @@ const ChannelsWrapper = styled.div`
   flex-direction: column;
 `;
 
-const Channel = ({ channel }) => {
+const CurrentChannelLink = styled(ChannelLink)`
+  background-color: rgb(230, 144, 47);
+
+  &:hover {
+    background-color: rgb(230, 144, 47);
+  }
+`;
+
+const Channel = ({ channel, current }) => {
   return (
     <Link href={`/channels/${channel.id}`}>
       <ChannelLink>{channel.slug}</ChannelLink>

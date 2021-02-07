@@ -24,6 +24,11 @@ export const Input = styled.input`
   margin-bottom: 10px;
   font-size: 1rem;
   border-radius: 5px;
-  border: none;
+  border: 2px solid black;
   padding-left: 5px;
+
+  &:focus {
+    outline: none;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.4);
+  }
 `;

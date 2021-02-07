@@ -18,10 +18,10 @@ const ModalOuter = styled.div`
 const ModalInner = styled.div`
   position: relative;
   height: auto;
-  border-radius: 10px;
+  border-radius: 5px;
   border-style: none;
   outline: none;
-  background-color: #28162c;
+  background-color: #dedacc;
   margin: 0 auto;
   margin-top: 30px;
   overflow-y: auto;
@@ -34,6 +34,7 @@ const Heading = styled.h3`
   margin: 20px 0;
   font-size: 1.4rem;
   font-weight: 400;
+  color: black;
 `;
 
 const Description = styled.p`
@@ -99,7 +100,7 @@ const Modal = ({ name, message, onConfirm, onCancel, input }) => {
             />
           )}
           <ButtonsWrapper>
-            <Button type="submit" className="confirm tilt">
+            <Button type="submit" className="alternate tilt">
               Confirm
             </Button>
             <Button onClick={onCancel} className="cancel tilt">
