@@ -1,14 +1,25 @@
+:root {
+  --dark-purple: #28162c;
+  --cyan: #36e0d5;
+  --background: #4a305f;
+  --red: #be234d;
+  --grey: rgb(140, 140, 140);
+  --darkGrey: rgb(50, 50, 50);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: rgb(29, 25, 39);
-  color: rgb(196, 193, 206);
-  margin: auto;
+  background-color: var(--background, grey);
+  color: white;
+  font-size: 16px;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 a {
@@ -16,6 +27,35 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.confirm {
+  background-color: var(--cyan, #36e0d5);
+  transition: 0.2s;
+}
+
+.tilt:hover {
+  transform: rotate(3deg);
+  transition: 0.2s;
+}
+
+.alternate {
+  background-color: var(--purple, #853dcc);
+  transition: 0.2s;
+}
+
+.cancel {
+  background-color: var(--red, #be234d);
+}
+
+.disabled {
+  background-color: var(--grey, rgb(140, 140, 140));
+  color: var(--darkGrey, rgb(50, 50, 50));
+  transition: 0.2s;
 }

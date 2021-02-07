@@ -1,6 +1,6 @@
-import '../styles/globals.css';
-import React from 'react';
-import { UserContextProvider } from '../components/UserContext';
+import "../styles/globals.css";
+import React from "react";
+import { UserContextProvider } from "../components/UserContext";
 
 function MyApp({ Component, pageProps }) {
   return (

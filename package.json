@@ -17,6 +17,7 @@
   "devDependencies": {
     "dotenv-load": "^2.0.0",
     "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "next-env": "^1.1.1"
   }
 }

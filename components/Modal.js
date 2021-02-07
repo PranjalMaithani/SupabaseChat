@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ConfirmButton, CancelButton } from "./ButtonStyles";
+import { Button, Input } from "./Styles";
 import { createModal, useClickOutside } from "../lib/util";
 import { handleKeyDown } from "../lib/handlers";
 import { useRef } from "react";
@@ -7,37 +7,45 @@ import ReactDOM from "react-dom";
 
 const ModalOuter = styled.div`
   width: 100vw;
+  height: 100vh;
   position: fixed;
+  z-index: 55;
+  background-color: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 55;
-  overflow: auto;
-  display: flex;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6);
 `;
 
 const ModalInner = styled.div`
-  border-radius: 3px;
+  position: relative;
+  height: auto;
+  border-radius: 10px;
   border-style: none;
   outline: none;
-  background-color: white;
-  width: 75vw;
+  background-color: #28162c;
+  margin: 0 auto;
   margin-top: 30px;
   overflow-y: auto;
+
+  width: 700px;
+  padding: 25px;
 `;
 
 const Heading = styled.h3`
+  margin: 20px 0;
   font-size: 1.4rem;
-  padding: 10px;
-  padding-left: 25px;
   font-weight: 400;
 `;
 
 const Description = styled.p`
   font-size: 1.2rem;
+`;
+
+const ButtonsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: end;
+  grid-gap: 14px;
+  margin-top: 10px;
 `;
 
 const CloseButton = styled.button`
@@ -79,13 +87,25 @@ const Modal = ({ name, message, onConfirm, onCancel, input }) => {
             onCancel();
           }}
           onKeyDown={(event) => {
-            console.log("key press");
             handleKeyDown(event, () => {}, onCancel);
           }}
         >
-          {input && <input name="input" placeholder={input} autoFocus />}
-          <ConfirmButton type="submit">Confirm</ConfirmButton>
-          <CancelButton onClick={onCancel}>Cancel</CancelButton>
+          {input && (
+            <Input
+              name="input"
+              placeholder={input}
+              autoFocus
+              autoComplete="off"
+            />
+          )}
+          <ButtonsWrapper>
+            <Button type="submit" className="confirm tilt">
+              Confirm
+            </Button>
+            <Button onClick={onCancel} className="cancel tilt">
+              Cancel
+            </Button>
+          </ButtonsWrapper>
         </form>
       </ModalInner>
     </ModalOuter>,
