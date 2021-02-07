@@ -27,9 +27,19 @@ export default function Chatroom() {
     [id],
   );
 
+  const logOut = useCallback(async () => {
+    let { error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error);
+    } else {
+      userContext.setCurrentUser(null);
+      router.replace('/');
+    }
+  });
+
   return (
     <ChatroomDiv>
-      <Sidebar channels={channels} />
+      <Sidebar channels={channels} onLogOut={logOut} />
       <div>
         <MessageWindow messages={messages} />
         <MessageInput

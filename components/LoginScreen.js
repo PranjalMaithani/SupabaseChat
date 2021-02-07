@@ -73,15 +73,6 @@ export default function LoginScreen() {
     fetchChannels();
   };
 
-  const logOut = async () => {
-    let { error } = await supabase.auth.signOut();
-    if (error) {
-      console.log(error);
-    } else {
-      userContext.setCurrentUser(null);
-    }
-  };
-
   return (
     <div>
       <p>Username</p>
@@ -106,7 +97,6 @@ export default function LoginScreen() {
       <div>
         <button onClick={signUp}>Sign Up</button>
         <button onClick={logIn}>Log In</button>
-        <button onClick={logOut}>Log Out</button>
       </div>
       <br />
       <span>{errorMessage}</span>
