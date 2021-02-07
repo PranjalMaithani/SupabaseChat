@@ -16,10 +16,11 @@ const Channel = ({ channel }) => {
   );
 };
 
-export default function Sidebar({ channels, onLogOut }) {
+export default function Sidebar({ channels, onLogOut, onAddChannel }) {
   return (
     <SidebarDiv>
       <button onClick={onLogOut}>Log Out</button>
+      <button onClick={onAddChannel}>Add Channel</button>
       {channels.map((channel) => (
         <Channel key={channel.id} channel={channel} />
       ))}

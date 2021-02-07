@@ -6,6 +6,8 @@ import MessageInput from './MessageInput';
 const MessagesDiv = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  height: 90%;
 `;
 
 //message obj -> message, user_id, inserted_at, channel_id, id
