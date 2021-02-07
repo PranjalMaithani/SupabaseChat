@@ -38,7 +38,7 @@ export default function LoginScreen() {
           let newUser = await supabase
             .from('users')
             .insert([{ id, username, email }]);
-          userContext.setCurrentUser(username);
+          userContext.setCurrentUser(id);
         }
       } catch (errorDb) {
         console.log(errorDb);
@@ -62,13 +62,8 @@ export default function LoginScreen() {
     } else {
       try {
         setErrorMessage(null);
-
         const id = user.id;
-        let loggedInUser = await supabase
-          .from('users')
-          .select('username')
-          .match({ id });
-        userContext.setCurrentUser(loggedInUser.body[0].username);
+        userContext.setCurrentUser(id);
       } catch (errorDb) {
         console.log(errorDb);
         setErrorMessage(errorDb.message);

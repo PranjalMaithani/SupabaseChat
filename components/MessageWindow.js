@@ -1,3 +1,4 @@
+import { Children } from 'react';
 import styled from 'styled-components';
 import Message from './Message';
 import MessageInput from './MessageInput';
@@ -14,7 +15,6 @@ export default function MessageWindow({ messages }) {
       {messages.map((message) => (
         <Message message={message} key={message.id} />
       ))}
-      <MessageInput />
     </MessagesDiv>
   );
 }
