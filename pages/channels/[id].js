@@ -31,7 +31,7 @@ const ChannelTitle = styled.h2``;
 export default function Chatroom() {
   const router = useRouter();
   const { id } = router.query;
-  const { messages, channels, users } = useStore(id, name);
+  const { messages, channels, users } = useStore(id);
   const userContext = useContext(UserContext);
 
   const [modal, setModal] = useState(null);
