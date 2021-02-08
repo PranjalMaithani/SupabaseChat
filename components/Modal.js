@@ -4,6 +4,7 @@ import { createModal, useClickOutside } from "../lib/util";
 import { handleKeyDown } from "../lib/handlers";
 import { useRef } from "react";
 import ReactDOM from "react-dom";
+import colors from "./colors";
 
 const ModalOuter = styled.div`
   width: 100vw;
@@ -21,7 +22,7 @@ const ModalInner = styled.div`
   border-radius: 5px;
   border-style: none;
   outline: none;
-  background-color: #dedacc;
+  background-color: ${colors.lightGrey};
   margin: 0 auto;
   margin-top: 30px;
   overflow-y: auto;
@@ -103,7 +104,7 @@ const Modal = ({ name, message, onConfirm, onCancel, input }) => {
             />
           )}
           <ButtonsWrapper>
-            <Button type="submit" className="alternate tilt">
+            <Button type="submit" className="confirm tilt">
               Confirm
             </Button>
             <Button onClick={onCancel} className="cancel tilt">

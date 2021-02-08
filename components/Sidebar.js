@@ -39,11 +39,11 @@ const ChannelsWrapper = styled.div`
 `;
 
 const CurrentChannelLink = styled(ChannelLink)`
-  background-color: ${colors.yellow};
+  background-color: ${colors.cyan};
   color: black;
 
   &:hover {
-    background-color: ${colors.yellow};
+    background-color: ${colors.cyan};
   }
 `;
 

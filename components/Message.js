@@ -9,7 +9,7 @@ const MessageDiv = styled.div`
 `;
 
 const MessageAuthor = styled.p`
-  color: ${colors.yellow};
+  color: ${colors.cyan};
   margin: 2px 0;
   font-size: 1.1em;
   font-weight: 400;
