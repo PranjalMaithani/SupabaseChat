@@ -8,8 +8,9 @@ import UserContext from "./UserContext";
 import styled from "styled-components";
 import { Button, Input } from "./Styles";
 
+import colors from "./colors";
+
 const Wrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,15 +18,19 @@ const Wrapper = styled.div`
   outline: 2px solid black;
   box-shadow: 2px 3px 2px black;
   padding: 20px;
+  background-color: ${colors.darkGrey};
+  width: 100%;
+  max-width: 328px;
 `;
 
 const LoginForm = styled.div`
   width: 288px;
+  font-size: 0.9em;
 `;
 
 const ButtonsWrapper = styled.div`
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: end;
@@ -39,7 +44,7 @@ const ErrorMessage = styled.div`
   margin: 5px;
   display: flex;
   justify-content: center;
-  margin-top: 75px;
+  margin-top: 375px;
 `;
 
 export default function LoginScreen() {
@@ -123,49 +128,51 @@ export default function LoginScreen() {
   };
 
   return (
-    <Wrapper>
-      <LoginForm>
-        <p>Username</p>
-        <Input
-          onChange={(event) => {
-            setUsername(event.currentTarget.value);
-          }}
-        />
-        <p>Email</p>
-        <Input
-          onChange={(event) => {
-            setEmail(event.currentTarget.value);
-          }}
-        />
-        <p>Password</p>
-        <Input
-          onChange={(event) => {
-            setPassword(event.currentTarget.value);
-          }}
-          type="password"
-        />
-        <ButtonsWrapper>
-          <Button
-            onClick={signUp}
-            className={`${allowed === "all" ? "confirm tilt" : "disabled"}`}
-          >
-            Sign Up
-          </Button>
-          <Button
-            onClick={logIn}
-            className={`${
-              allowed === "all" || allowed === "login"
-                ? "alternate tilt"
-                : "disabled"
-            }`}
-          >
-            Log In
-          </Button>
-        </ButtonsWrapper>
-      </LoginForm>
+    <>
+      <Wrapper>
+        <LoginForm>
+          <p>Username</p>
+          <Input
+            onChange={(event) => {
+              setUsername(event.currentTarget.value);
+            }}
+          />
+          <p>Email</p>
+          <Input
+            onChange={(event) => {
+              setEmail(event.currentTarget.value);
+            }}
+          />
+          <p>Password</p>
+          <Input
+            onChange={(event) => {
+              setPassword(event.currentTarget.value);
+            }}
+            type="password"
+          />
+          <ButtonsWrapper>
+            <Button
+              onClick={signUp}
+              className={`${allowed === "all" ? "confirm tilt" : "disabled"}`}
+            >
+              Sign Up
+            </Button>
+            <Button
+              onClick={logIn}
+              className={`${
+                allowed === "all" || allowed === "login"
+                  ? "alternate tilt"
+                  : "disabled"
+              }`}
+            >
+              Log In
+            </Button>
+          </ButtonsWrapper>
+        </LoginForm>
+      </Wrapper>
       {errorMessage && (
         <ErrorMessage className="cancel">{errorMessage}</ErrorMessage>
       )}
-    </Wrapper>
+    </>
   );
 }

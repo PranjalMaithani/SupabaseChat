@@ -1,14 +1,23 @@
-import styled from 'styled-components';
-import supabase from '../lib/supabase';
-import UserContext from './UserContext';
-import { addMessage } from '../lib/addData';
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
+import styled from "styled-components";
+import supabase from "../lib/supabase";
+import UserContext from "./UserContext";
+import { addMessage } from "../lib/addData";
+import { useContext } from "react";
+import { useRouter } from "next/router";
 
-const Input = styled.input`
-  width: 100%;
-  height: 32px;
-  font-size: 16px;
+import { Input } from "./Styles";
+
+const InputChatForm = styled.form`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+`;
+
+const InputChat = styled(Input)`
+  width: 95%;
+  height: 42px;
+  font-size: 1.2rem;
+  padding: 10px;
 `;
 
 export default function MessageInput({ onSubmit }) {
@@ -16,14 +25,17 @@ export default function MessageInput({ onSubmit }) {
   const router = useRouter();
   const { id } = router.query; //channel id
   return (
-    <form
+    <InputChatForm
       onSubmit={(event) => {
         event.preventDefault();
-        onSubmit(event.currentTarget.input.value);
-        event.currentTarget.input.value = '';
+        const text = event.currentTarget.input.value;
+        if (text !== "") {
+          onSubmit(event.currentTarget.input.value);
+          event.currentTarget.input.value = "";
+        }
       }}
     >
-      <Input name="input" autoComplete="off" />
-    </form>
+      <InputChat name="input" autoComplete="off" />
+    </InputChatForm>
   );
 }

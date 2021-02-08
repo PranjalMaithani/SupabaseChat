@@ -1,13 +1,14 @@
-import { Children } from 'react';
-import styled from 'styled-components';
-import Message from './Message';
-import MessageInput from './MessageInput';
+import { Children } from "react";
+import styled from "styled-components";
+import Message from "./Message";
+import MessageInput from "./MessageInput";
 
 const MessagesDiv = styled.div`
+  overflow-y: scroll;
+  height: 85%;
+  padding-left: 30px;
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  height: 90%;
+  flex-direction: column-reverse;
 `;
 
 //message obj -> message, user_id, inserted_at, channel_id, id

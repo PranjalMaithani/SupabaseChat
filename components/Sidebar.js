@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button } from "./Styles";
 
+import colors from "./colors";
+
 const SidebarDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,13 +12,18 @@ const SidebarDiv = styled.div`
   background-color: rgb(0, 0, 0);
 `;
 
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+`;
+
 const ChannelLink = styled.a`
   background-color: rgba(255, 255, 255, 0);
   transition: 0.1s;
 
   padding: 2px 0;
-  padding-left: 20px;
-
+  padding-left: 25px;
   font-size: 1rem;
   cursor: pointer;
   &:hover {
@@ -32,30 +39,38 @@ const ChannelsWrapper = styled.div`
 `;
 
 const CurrentChannelLink = styled(ChannelLink)`
-  background-color: rgb(230, 144, 47);
+  background-color: ${colors.yellow};
+  color: black;
 
   &:hover {
-    background-color: rgb(230, 144, 47);
+    background-color: ${colors.yellow};
   }
 `;
 
 const Channel = ({ channel, current }) => {
-  return (
-    <Link href={`/channels/${channel.id}`}>
-      <ChannelLink>{channel.slug}</ChannelLink>
-    </Link>
-  );
+  const router = useRouter();
+  if (router.query.id == channel.id) {
+    return <CurrentChannelLink>{channel.slug}</CurrentChannelLink>;
+  } else {
+    return (
+      <Link href={`/channels/${channel.id}`}>
+        <ChannelLink>{channel.slug}</ChannelLink>
+      </Link>
+    );
+  }
 };
 
 export default function Sidebar({ channels, onLogOut, onAddChannel }) {
   return (
     <SidebarDiv>
-      <Button onClick={onLogOut} className="cancel tilt">
-        Log Out
-      </Button>
-      <Button onClick={onAddChannel} className="tilt">
-        Add Channel
-      </Button>
+      <ButtonsWrapper>
+        <Button onClick={onLogOut} className="cancel tilt">
+          Log Out
+        </Button>
+        <Button onClick={onAddChannel} className="tilt">
+          Add Channel
+        </Button>
+      </ButtonsWrapper>
       <ChannelsWrapper>
         {channels.map((channel) => (
           <Channel key={channel.id} channel={channel} />

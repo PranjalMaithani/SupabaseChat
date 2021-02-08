@@ -84,8 +84,11 @@ const Modal = ({ name, message, onConfirm, onCancel, input }) => {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            onConfirm(event.currentTarget.input.value);
-            onCancel();
+            const text = event.currentTarget.input.value;
+            if (text !== "") {
+              onConfirm(event.currentTarget.input.value);
+              onCancel();
+            }
           }}
           onKeyDown={(event) => {
             handleKeyDown(event, () => {}, onCancel);

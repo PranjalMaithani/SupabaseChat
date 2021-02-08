@@ -22,14 +22,16 @@ const MessagesDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   overflow-y: hidden;
 `;
+
+const ChannelTitle = styled.h2``;
 
 export default function Chatroom() {
   const router = useRouter();
   const { id } = router.query;
-  const { messages, channels, users } = useStore(id);
+  const { messages, channels, users } = useStore(id, name);
   const userContext = useContext(UserContext);
 
   const [modal, setModal] = useState(null);
@@ -63,6 +65,7 @@ export default function Chatroom() {
         onAddChannel={addNewChannel}
       />
       <MessagesDiv>
+        <ChannelTitle>{id}</ChannelTitle>
         <MessageWindow messages={messages} />
         <MessageInput
           onSubmit={(text) => {
